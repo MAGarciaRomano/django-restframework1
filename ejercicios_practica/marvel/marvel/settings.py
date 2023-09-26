@@ -53,19 +53,37 @@ LOCAL_APPS = [
 
 INSTALLED_APPS = BASE_APPS + THIRD_APPS + LOCAL_APPS
 
-# INSTALLED_APPS = [
-#     'django.contrib.admin',
-#     'django.contrib.auth',
-#     'django.contrib.contenttypes',
-#     'django.contrib.sessions',
-#     'django.contrib.messages',
-#     'django.contrib.staticfiles',
-#     # Local apps: Acá ponemos el nombre de las carpetas de nuestras aplicaciones
-#     'e_commerce',
-#     # Third party apps: acá vamos agregando las aplicaciones de terceros, extensiones de Django.
-#     'rest_framework',
-#     'rest_framework.authtoken',
-# ]
+#INSTALLED_APPS = [
+#   'django.contrib.admin',
+#    'django.contrib.auth',
+#    'django.contrib.contenttypes',
+#    'django.contrib.sessions',
+#    'django.contrib.messages',
+#    'django.contrib.staticfiles',
+    # Local apps: Acá ponemos el nombre de las carpetas de nuestras aplicaciones
+#    'e_commerce',
+    # Third party apps: acá vamos agregando las aplicaciones de terceros, extensiones de Django.
+# ¡TAREA! 4 - PASO 2 - Instalación de Django REST Framework (DRF) en "ejercicios_practica"
+# (agregado a la variable INSTALLED_APPS).
+#    'rest_framework',
+#    'rest_framework.authtoken',
+#]
+
+# ¡TAREA! 4 - PASO 1 - Instalación de Django REST Framework (DRF) en "ejercicios_practica".
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+            # NOTE: Este es para que se pueda crear un usuario sin estar autenticado, sino usar el
+    #IsAuthenticated:
+        #'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -162,3 +180,12 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# NOTE: Para debug
+
+# Color en los prints:
+# Modo de uso: print(VERDE+"mi texto")
+
+AMARILLO = "\033[;33m"
+CIAN = "\033[;36m"
+VERDE = "\033[;32m"
